@@ -53,6 +53,10 @@ class CodeGenerator:
 
         self._json_keywords_to_function = OrderedDict()
 
+    def set_custom_generators(self, generators):
+        for k, v in generators.items():
+            self._json_keywords_to_function[k] = lambda: v(self)
+
     @property
     def func_code(self):
         """
